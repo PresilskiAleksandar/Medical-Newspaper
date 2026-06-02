@@ -16,7 +16,7 @@ exports.getAll = async (req, res) => {
       LEFT JOIN users u ON a.author_id = u.id
       WHERE 1=1
     `;
-    let countQuery = `SELECT COUNT(*) FROM articles a WHERE 1=1`;
+    let countQuery = `SELECT COUNT(*) FROM articles a LEFT JOIN categories c ON a.category_id = c.id WHERE 1=1`;
     const params = [];
     const countParams = [];
     let paramIndex = 1;
