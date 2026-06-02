@@ -42,7 +42,16 @@ const Home = () => {
                     {article.image ? (
                       <img src={`http://localhost:5000${article.image}`} alt={article.title} />
                     ) : (
-                      <div className="featured-placeholder"><span>+</span></div>
+                      <div className="featured-placeholder">
+                        <svg viewBox="0 0 600 280" className="placeholder-svg">
+                          <rect width="600" height="280" fill="url(#fg)" />
+                          <defs><linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#e0f2fe"/><stop offset="100%" stopColor="#ccfbf1"/></linearGradient></defs>
+                          <circle cx="300" cy="110" r="40" fill="rgba(255,255,255,0.35)" />
+                          <text x="300" y="122" textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="36" fontWeight="300">+</text>
+                          <rect x="200" y="180" width="200" height="10" rx="5" fill="rgba(255,255,255,0.4)" />
+                          <rect x="230" y="200" width="140" height="8" rx="4" fill="rgba(255,255,255,0.25)" />
+                        </svg>
+                      </div>
                     )}
                   </div>
                 </Link>

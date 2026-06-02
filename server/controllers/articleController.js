@@ -86,7 +86,7 @@ exports.getById = async (req, res) => {
        FROM articles a
        LEFT JOIN categories c ON a.category_id = c.id
        LEFT JOIN users u ON a.author_id = u.id
-       WHERE a.id = $1 OR a.slug = $1`,
+       WHERE a.id::text = $1 OR a.slug = $1`,
       [req.params.id]
     );
 
@@ -132,7 +132,7 @@ exports.create = async (req, res) => {
 
 exports.update = async (req, res) => {
   try {
-    const { title, excerpt, content, category_id, featured } = req.body;
+    const { title, excerpt, content, category_id, featured, image: bodyImage } = req.body;
 
     const existing = await db.query('SELECT * FROM articles WHERE id = $1', [req.params.id]);
     if (existing.rows.length === 0) {
@@ -148,7 +148,7 @@ exports.update = async (req, res) => {
       }
     }
 
-    const image = req.file ? '/uploads/' + req.file.filename : existing.rows[0].image;
+    const image = req.file ? '/uploads/' + req.file.filename : (bodyImage !== undefined ? bodyImage : existing.rows[0].image);
 
     const result = await db.query(
       `UPDATE articles SET title = $1, slug = $2, excerpt = $3, content = $4, image = $5,
