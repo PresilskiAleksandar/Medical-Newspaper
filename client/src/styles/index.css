@@ -330,6 +330,10 @@ input, select, textarea { font-family: inherit; font-size: inherit; outline: non
   text-align: center;
 }
 
+[data-theme="dark"] .hero-section {
+  background: linear-gradient(135deg, #0c4a6e 0%, #134e4a 100%);
+}
+
 .hero-content {
   max-width: 700px;
   margin: 0 auto;
@@ -350,6 +354,10 @@ input, select, textarea { font-family: inherit; font-size: inherit; outline: non
   color: var(--gray-500);
   margin-bottom: 32px;
   line-height: 1.6;
+}
+
+[data-theme="dark"] .hero-subtitle {
+  color: #cbd5e1;
 }
 
 .hero-actions {
