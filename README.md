@@ -4,47 +4,48 @@
 
 ## Tech Stack
 
-**Frontend:** React 18, React Router, Context API, CSS  
+**Frontend:** React 18, React Router v6, Context API, CSS  
 **Backend:** Node.js, Express.js, JWT, bcrypt  
 **Database:** PostgreSQL
 
 ## Quick Start
 
-### Prerequisites
-- Node.js v18+
-- PostgreSQL 14+
-
-### 1. Database
 ```bash
-psql -U postgres -f database/schema.sql
-psql -U postgres -d medinfo -f database/seed.sql
-```
+# 1. Clone
+git clone https://github.com/PresilskiAleksandar/Medical-Newspaper.git
+cd Medical-Newspaper
 
-### 2. Backend
-```bash
-cd server
-npm install
-# Edit .env with your database credentials
-npm run dev
-```
+# 2. Install dependencies
+cd server && npm install
+cd ../client && npm install
+cd ..
 
-### 3. Frontend
-```bash
-cd client
-npm install
-npm start
-```
+# 3. Setup PostgreSQL
+#    Create database "medinfo", then:
+psql -U postgres -d medinfo -f database/schema.sql
+node server/seed.js
 
-Open http://localhost:3000
+# 4. Configure server/.env
+PORT=5000
+DATABASE_URL=postgresql://postgres:Test12345!@localhost:5433/medinfo
+JWT_SECRET=medinfo_super_secret_jwt_key_2024
+JWT_EXPIRES_IN=7d
+UPLOAD_PATH=uploads/
+MAX_FILE_SIZE=5242880
+
+# 5. Start
+cd server && npm run dev     # Backend :5000
+cd client && npm start       # Frontend :3000
+```
 
 ## Default Admin
-- Email: admin@medinfo.mk
-- Password: (generate via register, then manually set role to 'admin' in DB)
 
-## Project Structure
-```
-medinfo/
-├── client/          # React frontend
-├── server/          # Express backend
-└── database/        # SQL schema + seed
-```
+**Email:** `admin@medinfo.mk`  
+**Password:** `admin123`
+
+## Features
+
+- Рolyute / Recenten / Пребарување / Категории
+- Коментари / Омилени
+- Админ панел: вести, категории, коментари, корисници
+- Dark mode / Responsive / Македонски јазик
