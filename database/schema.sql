@@ -1,0 +1,71 @@
+CREATE DATABASE medinfo;
+
+\c medinfo;
+
+-- Users table
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(20) NOT NULL DEFAULT 'reader' CHECK (role IN ('admin', 'reader')),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_users_email ON users(email);
+CREATE INDEX idx_users_role ON users(role);
+
+-- Categories table
+CREATE TABLE IF NOT EXISTS categories (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    slug VARCHAR(255) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_categories_slug ON categories(slug);
+
+-- Articles table
+CREATE TABLE IF NOT EXISTS articles (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(500) NOT NULL,
+    slug VARCHAR(500) UNIQUE NOT NULL,
+    excerpt TEXT,
+    content TEXT NOT NULL,
+    image VARCHAR(500),
+    category_id INTEGER REFERENCES categories(id) ON DELETE SET NULL,
+    author_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    featured BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_articles_slug ON articles(slug);
+CREATE INDEX idx_articles_category_id ON articles(category_id);
+CREATE INDEX idx_articles_author_id ON articles(author_id);
+CREATE INDEX idx_articles_featured ON articles(featured);
+CREATE INDEX idx_articles_created_at ON articles(created_at DESC);
+
+-- Comments table
+CREATE TABLE IF NOT EXISTS comments (
+    id SERIAL PRIMARY KEY,
+    article_id INTEGER REFERENCES articles(id) ON DELETE CASCADE,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    content TEXT NOT NULL,
+    approved BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_comments_article_id ON comments(article_id);
+CREATE INDEX idx_comments_user_id ON comments(user_id);
+
+-- Favorites table
+CREATE TABLE IF NOT EXISTS favorites (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    article_id INTEGER REFERENCES articles(id) ON DELETE CASCADE,
+    UNIQUE(user_id, article_id)
+);
+
+CREATE INDEX idx_favorites_user_id ON favorites(user_id);
+CREATE INDEX idx_favorites_article_id ON favorites(article_id);
