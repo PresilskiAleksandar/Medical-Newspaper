@@ -28,6 +28,7 @@ const Navbar = () => {
           <span className="brand-text">МедИнфо</span>
         </Link>
 
+        {menuOpen && <div className="menu-overlay" onClick={() => setMenuOpen(false)}></div>}
         <div className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
           <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}>Почетна</Link>
           <Link to="/vesti" className="nav-link" onClick={() => setMenuOpen(false)}>Вести</Link>

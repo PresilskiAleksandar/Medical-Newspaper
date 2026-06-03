@@ -178,6 +178,8 @@ input, select, textarea { font-family: inherit; font-size: inherit; outline: non
   font-weight: 300;
 }
 
+.menu-overlay { display: none; }
+
 .navbar-menu {
   display: flex;
   align-items: center;
@@ -2004,6 +2006,17 @@ input, select, textarea { font-family: inherit; font-size: inherit; outline: non
   }
 
   .navbar-menu.active { display: flex; }
+
+  .menu-overlay {
+    display: block;
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 98;
+  }
 
   .hamburger { display: flex; }
 
