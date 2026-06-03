@@ -1,6 +1,4 @@
-CREATE DATABASE medinfo;
-
-\c medinfo;
+-- Database already exists on Supabase
 
 -- Users table
 CREATE TABLE IF NOT EXISTS users (

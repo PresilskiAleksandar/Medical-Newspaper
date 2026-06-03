@@ -1,7 +1,5 @@
 -- Database already exists on Supabase
 
-\c medinfo;
-
 -- Users table
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
