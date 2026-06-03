@@ -3,6 +3,7 @@ const { slugify } = require('../utils/helpers');
 
 exports.getAll = async (req, res) => {
   try {
+    console.log('getAll called, query:', req.query);
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
     const offset = (page - 1) * limit;

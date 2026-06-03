@@ -26,6 +26,17 @@ app.use('/api/favorites', favoriteRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/upload', uploadRoutes);
 
+app.get('/api/health', async (req, res) => {
+  try {
+    const db = require('./config/db');
+    const result = await db.query('SELECT NOW()');
+    const count = await db.query('SELECT COUNT(*) as c FROM articles');
+    res.json({ status: 'ok', db: result.rows[0].now, articles: count.rows[0].c });
+  } catch (e) {
+    res.status(500).json({ status: 'error', message: e.message, stack: e.stack });
+  }
+});
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(err.status || 500).json({
