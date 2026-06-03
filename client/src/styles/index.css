@@ -1996,13 +1996,13 @@ input, select, textarea { font-family: inherit; font-size: inherit; outline: non
     top: var(--navbar-height);
     left: 0;
     right: 0;
-    background: var(--glass);
-    backdrop-filter: blur(20px);
+    background: var(--bg);
     flex-direction: column;
     padding: 16px;
-    border-bottom: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--border);
     display: none;
     animation: slideDown 0.3s ease;
+    z-index: 100;
   }
 
   .navbar-menu.active { display: flex; }
@@ -2014,8 +2014,8 @@ input, select, textarea { font-family: inherit; font-size: inherit; outline: non
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.3);
-    z-index: 98;
+    background: rgba(0,0,0,0.4);
+    z-index: 99;
   }
 
   .hamburger { display: flex; }
