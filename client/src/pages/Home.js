@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNews } from '../context/NewsContext';
 import ArticleCard from '../components/ArticleCard';
 import SkeletonCard from '../components/SkeletonCard';
+import { IMAGE_BASE } from '../config';
 
 const Home = () => {
   const { articles, featured, loading, fetchArticles, fetchFeatured } = useNews();
@@ -40,7 +41,7 @@ const Home = () => {
                 <Link to={`/vest/${article.slug || article.id}`} className="featured-image-link">
                   <div className="featured-image">
                     {article.image ? (
-                      <img src={`http://localhost:5000${article.image}`} alt={article.title} />
+                      <img src={`${IMAGE_BASE}${article.image}`} alt={article.title} />
                     ) : (
                       <div className="featured-placeholder">
                         <svg viewBox="0 0 600 280" className="placeholder-svg">

@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { articlesAPI, commentsAPI, favoritesAPI } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { useNotification } from '../context/NotificationContext';
+import { IMAGE_BASE } from '../config';
 import CommentSection from '../components/CommentSection';
 
 const ArticleDetail = () => {
@@ -107,7 +108,7 @@ const ArticleDetail = () => {
 
         {article.image && (
           <div className="article-detail-image">
-            <img src={`http://localhost:5000${article.image}`} alt={article.title} />
+            <img src={`${IMAGE_BASE}${article.image}`} alt={article.title} />
           </div>
         )}
 

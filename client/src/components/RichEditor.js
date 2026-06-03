@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { uploadAPI } from '../services/api';
 import { useNotification } from '../context/NotificationContext';
+import { IMAGE_BASE } from '../config';
 
 const RichEditor = ({ value, onChange, placeholder }) => {
   const textareaRef = useRef(null);
@@ -29,7 +30,7 @@ const RichEditor = ({ value, onChange, placeholder }) => {
     setUploading(true);
     try {
       const res = await uploadAPI.image(file);
-      const imgTag = `<img src="http://localhost:5000${res.data.url}" alt="slika" style="max-width:100%;border-radius:12px;margin:16px 0;" />`;
+      const imgTag = `<img src="${IMAGE_BASE}${res.data.url}" alt="slika" style="max-width:100%;border-radius:12px;margin:16px 0;" />`;
       const ta = textareaRef.current;
       const start = ta.selectionStart;
       const before = value.substring(0, start);

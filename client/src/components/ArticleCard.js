@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { IMAGE_BASE } from '../config';
 
 const ArticleCard = ({ article }) => {
   const date = new Date(article.created_at).toLocaleDateString('mk-MK', {
@@ -11,7 +12,7 @@ const ArticleCard = ({ article }) => {
       <Link to={`/vest/${article.slug || article.id}`} className="card-image-link">
         <div className="card-image">
           {article.image ? (
-            <img src={`http://localhost:5000${article.image}`} alt={article.title} loading="lazy" />
+            <img src={`${IMAGE_BASE}${article.image}`} alt={article.title} loading="lazy" />
           ) : (
             <div className="card-image-placeholder">
               <svg viewBox="0 0 400 200" className="placeholder-svg">

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { articlesAPI, categoriesAPI } from '../../services/api';
 import { useNotification } from '../../context/NotificationContext';
 import Input from '../../components/Input';
+import { IMAGE_BASE } from '../../config';
 import RichEditor from '../../components/RichEditor';
 
 const EditArticle = () => {
@@ -110,7 +111,7 @@ const EditArticle = () => {
           <input type="file" accept="image/*" onChange={handleImage} className="form-input" />
           {preview && <img src={preview} alt="Preview" className="image-preview" />}
           {!preview && existingImage && (
-            <img src={`http://localhost:5000${existingImage}`} alt="Current" className="image-preview" />
+            <img src={`${IMAGE_BASE}${existingImage}`} alt="Current" className="image-preview" />
           )}
         </div>
         <div className="form-actions">
