@@ -103,7 +103,7 @@ exports.getById = async (req, res) => {
 
 exports.create = async (req, res) => {
   try {
-    const { title, excerpt, content, category_id, featured } = req.body;
+    const { title, excerpt, content, category_id, featured, status, meta_title, meta_description, source_name, source_url } = req.body;
 
     if (!title || !content) {
       return res.status(400).json({ error: 'Насловот и содржината се задолжителни.' });
@@ -115,12 +115,12 @@ exports.create = async (req, res) => {
       slug = slug + '-' + Date.now();
     }
 
-    const image = req.file ? '/uploads/' + req.file.filename : null;
+    const image = req.file ? '/uploads/' + req.file.filename : (req.body.image || null);
 
     const result = await db.query(
-      `INSERT INTO articles (title, slug, excerpt, content, image, category_id, author_id, featured)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
-      [title, slug, excerpt, content, image, category_id || null, req.user.id, featured || false]
+      `INSERT INTO articles (title, slug, excerpt, content, image, category_id, author_id, featured, status, meta_title, meta_description, source_name, source_url)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *`,
+      [title, slug, excerpt, content, image, category_id || null, req.user.id, featured || false, status || 'PUBLISHED', meta_title, meta_description, source_name, source_url]
     );
 
     res.status(201).json(result.rows[0]);
@@ -132,7 +132,7 @@ exports.create = async (req, res) => {
 
 exports.update = async (req, res) => {
   try {
-    const { title, excerpt, content, category_id, featured, image: bodyImage } = req.body;
+    const { title, excerpt, content, category_id, featured, image: bodyImage, status, meta_title, meta_description, source_name, source_url } = req.body;
 
     const existing = await db.query('SELECT * FROM articles WHERE id = $1', [req.params.id]);
     if (existing.rows.length === 0) {
@@ -152,8 +152,9 @@ exports.update = async (req, res) => {
 
     const result = await db.query(
       `UPDATE articles SET title = $1, slug = $2, excerpt = $3, content = $4, image = $5,
-       category_id = $6, featured = $7, updated_at = CURRENT_TIMESTAMP
-       WHERE id = $8 RETURNING *`,
+       category_id = $6, featured = $7, status = $8, meta_title = $9, meta_description = $10,
+       source_name = $11, source_url = $12, updated_at = CURRENT_TIMESTAMP
+       WHERE id = $13 RETURNING *`,
       [
         title || existing.rows[0].title,
         slug,
@@ -162,6 +163,11 @@ exports.update = async (req, res) => {
         image,
         category_id !== undefined ? category_id : existing.rows[0].category_id,
         featured !== undefined ? featured : existing.rows[0].featured,
+        status !== undefined ? status : existing.rows[0].status,
+        meta_title !== undefined ? meta_title : existing.rows[0].meta_title,
+        meta_description !== undefined ? meta_description : existing.rows[0].meta_description,
+        source_name !== undefined ? source_name : existing.rows[0].source_name,
+        source_url !== undefined ? source_url : existing.rows[0].source_url,
         req.params.id,
       ]
     );

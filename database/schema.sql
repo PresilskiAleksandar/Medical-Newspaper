@@ -36,6 +36,11 @@ CREATE TABLE IF NOT EXISTS articles (
     category_id INTEGER REFERENCES categories(id) ON DELETE SET NULL,
     author_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     featured BOOLEAN DEFAULT FALSE,
+    status VARCHAR(20) DEFAULT 'DRAFT' CHECK (status IN ('DRAFT', 'PUBLISHED', 'ARCHIVED')),
+    meta_title VARCHAR(500),
+    meta_description TEXT,
+    source_name VARCHAR(500),
+    source_url VARCHAR(1000),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
