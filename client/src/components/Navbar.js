@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
@@ -10,6 +10,24 @@ const Navbar = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
+  const navbarRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (navbarRef.current && !navbarRef.current.contains(e.target)) {
+        setMenuOpen(false);
+        setSearchOpen(false);
+      }
+    };
+    if (menuOpen || searchOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [menuOpen, searchOpen]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -21,7 +39,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" ref={navbarRef}>
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
           <div className="brand-icon">+</div>
@@ -61,8 +79,8 @@ const Navbar = () => {
       </div>
 
       {searchOpen && (
-        <div className="search-overlay">
-          <form onSubmit={handleSearch} className="search-form">
+        <div className="search-overlay" onClick={() => setSearchOpen(false)}>
+          <form onSubmit={handleSearch} className="search-form" onClick={(e) => e.stopPropagation()}>
             <input
               type="text"
               placeholder="Пребарувај вести..."
