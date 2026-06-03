@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX idx_users_email ON users(email);
-CREATE INDEX idx_users_role ON users(role);
+CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+CREATE INDEX IF NOT EXISTS idx_users_role ON users(role);
 
 -- Categories table
 CREATE TABLE IF NOT EXISTS categories (
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS categories (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX idx_categories_slug ON categories(slug);
+CREATE INDEX IF NOT EXISTS idx_categories_slug ON categories(slug);
 
 -- Articles table
 CREATE TABLE IF NOT EXISTS articles (
@@ -45,11 +45,11 @@ CREATE TABLE IF NOT EXISTS articles (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX idx_articles_slug ON articles(slug);
-CREATE INDEX idx_articles_category_id ON articles(category_id);
-CREATE INDEX idx_articles_author_id ON articles(author_id);
-CREATE INDEX idx_articles_featured ON articles(featured);
-CREATE INDEX idx_articles_created_at ON articles(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_articles_slug ON articles(slug);
+CREATE INDEX IF NOT EXISTS idx_articles_category_id ON articles(category_id);
+CREATE INDEX IF NOT EXISTS idx_articles_author_id ON articles(author_id);
+CREATE INDEX IF NOT EXISTS idx_articles_featured ON articles(featured);
+CREATE INDEX IF NOT EXISTS idx_articles_created_at ON articles(created_at DESC);
 
 -- Comments table
 CREATE TABLE IF NOT EXISTS comments (
@@ -61,8 +61,8 @@ CREATE TABLE IF NOT EXISTS comments (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX idx_comments_article_id ON comments(article_id);
-CREATE INDEX idx_comments_user_id ON comments(user_id);
+CREATE INDEX IF NOT EXISTS idx_comments_article_id ON comments(article_id);
+CREATE INDEX IF NOT EXISTS idx_comments_user_id ON comments(user_id);
 
 -- Favorites table
 CREATE TABLE IF NOT EXISTS favorites (
@@ -72,5 +72,5 @@ CREATE TABLE IF NOT EXISTS favorites (
     UNIQUE(user_id, article_id)
 );
 
-CREATE INDEX idx_favorites_user_id ON favorites(user_id);
-CREATE INDEX idx_favorites_article_id ON favorites(article_id);
+CREATE INDEX IF NOT EXISTS idx_favorites_user_id ON favorites(user_id);
+CREATE INDEX IF NOT EXISTS idx_favorites_article_id ON favorites(article_id);
