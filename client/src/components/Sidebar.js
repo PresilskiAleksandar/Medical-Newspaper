@@ -10,6 +10,7 @@ const Sidebar = ({ onClose }) => {
       <div className="sidebar-header">
         <div className="sidebar-brand">МедИнфо</div>
         <span className="sidebar-subtitle">Админ Панел</span>
+        <button className="sidebar-close" onClick={onClose} aria-label="Затвори">&times;</button>
       </div>
 
       <nav className="sidebar-nav">
