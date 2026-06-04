@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { categoriesAPI } from '../services/api';
+import { IMAGE_BASE } from '../config';
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -31,8 +32,16 @@ const Categories = () => {
           <div className="categories-grid">
             {categories.map((cat) => (
               <Link to={`/kategorii/${cat.slug}`} key={cat.id} className="category-card">
-                <div className="category-icon">
-                  <span>+</span>
+                <div className="category-image-wrapper">
+                  <img
+                    src={cat.image ? `${IMAGE_BASE}${cat.image}` : ''}
+                    alt={cat.name}
+                    className="category-image"
+                    loading="lazy"
+                  />
+                  <div className="category-icon">
+                    <span>+</span>
+                  </div>
                 </div>
                 <h3 className="category-name">{cat.name}</h3>
                 <span className="category-count">{cat.article_count} статии</span>
