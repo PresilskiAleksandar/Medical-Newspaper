@@ -1,60 +1,66 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+
+const NAV_ITEMS = [
+  { path: '/admin', label: 'Контролна Табла' },
+  { path: '/admin/vesti', label: 'Управување со Вести' },
+  { path: '/admin/vesti/nova', label: 'Додај Вест' },
+  { path: '/admin/kategorii', label: 'Категории' },
+  { path: '/admin/komentari', label: 'Коментари' },
+  { path: '/admin/korisnici', label: 'Корисници' },
+];
 
 const Sidebar = ({ onClose }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { logout } = useAuth();
 
-  const isActive = (path) => location.pathname === path || 
-    (path !== '/admin' && location.pathname.startsWith(path)) ? 'active' : '';
+  const isActive = useCallback((path) => {
+    if (path === '/admin') return location.pathname === '/admin';
+    return location.pathname.startsWith(path);
+  }, [location.pathname]);
 
-  const goTo = (path) => (e) => {
-    e.preventDefault();
+  const handleNav = useCallback((path) => {
     navigate(path);
     if (onClose) onClose();
-  };
+  }, [navigate, onClose]);
 
-  const handleLogout = (e) => {
-    e.preventDefault();
+  const handleLogout = useCallback(() => {
     logout();
     if (onClose) onClose();
-  };
-
-  const links = [
-    { to: '/admin', label: 'Контролна Табла' },
-    { to: '/admin/vesti', label: 'Управување со Вести' },
-    { to: '/admin/vesti/nova', label: 'Додај Вест' },
-    { to: '/admin/kategorii', label: 'Категории' },
-    { to: '/admin/komentari', label: 'Коментари' },
-    { to: '/admin/korisnici', label: 'Корисници' },
-  ];
+  }, [logout, onClose]);
 
   return (
     <aside className="admin-sidebar">
       <div className="sidebar-header">
         <div className="sidebar-brand">МедИнфо</div>
         <span className="sidebar-subtitle">Админ Панел</span>
-        <button type="button" className="sidebar-close" onClick={() => { if (onClose) onClose(); }} aria-label="Затвори">&times;</button>
+        <button type="button" className="sidebar-close" onClick={() => onClose?.()} aria-label="Затвори">
+          &times;
+        </button>
       </div>
 
       <nav className="sidebar-nav">
-        {links.map(link => (
-          <a
-            key={link.to}
-            href={link.to}
-            className={isActive(link.to)}
-            onClick={goTo(link.to)}
+        {NAV_ITEMS.map(item => (
+          <button
+            key={item.path}
+            type="button"
+            className={`sidebar-nav-item${isActive(item.path) ? ' active' : ''}`}
+            onClick={() => handleNav(item.path)}
           >
-            {link.label}
-          </a>
+            {item.label}
+          </button>
         ))}
       </nav>
 
       <div className="sidebar-footer">
-        <a href="/" className="back-link" onClick={goTo('/')}>Врати се на страницата</a>
-        <button type="button" onClick={handleLogout} className="logout-btn">Одјава</button>
+        <button type="button" className="back-link" onClick={() => handleNav('/')}>
+          Врати се на страницата
+        </button>
+        <button type="button" className="logout-btn" onClick={handleLogout}>
+          Одјава
+        </button>
       </div>
     </aside>
   );

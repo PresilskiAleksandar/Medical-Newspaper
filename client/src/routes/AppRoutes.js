@@ -4,6 +4,14 @@ import MainLayout from '../layouts/MainLayout';
 import AdminLayout from '../layouts/AdminLayout';
 import ProtectedRoute from '../components/ProtectedRoute';
 
+import Dashboard from '../pages/admin/Dashboard';
+import ManageArticles from '../pages/admin/ManageArticles';
+import CreateArticle from '../pages/admin/CreateArticle';
+import EditArticle from '../pages/admin/EditArticle';
+import ManageCategories from '../pages/admin/ManageCategories';
+import ManageComments from '../pages/admin/ManageComments';
+import ManageUsers from '../pages/admin/ManageUsers';
+
 const Home = lazy(() => import('../pages/Home'));
 const Login = lazy(() => import('../pages/Login'));
 const Register = lazy(() => import('../pages/Register'));
@@ -15,18 +23,8 @@ const Search = lazy(() => import('../pages/Search'));
 const Favorites = lazy(() => import('../pages/Favorites'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
-const Dashboard = lazy(() => import('../pages/admin/Dashboard'));
-const ManageArticles = lazy(() => import('../pages/admin/ManageArticles'));
-const CreateArticle = lazy(() => import('../pages/admin/CreateArticle'));
-const EditArticle = lazy(() => import('../pages/admin/EditArticle'));
-const ManageCategories = lazy(() => import('../pages/admin/ManageCategories'));
-const ManageComments = lazy(() => import('../pages/admin/ManageComments'));
-const ManageUsers = lazy(() => import('../pages/admin/ManageUsers'));
-
 const PageLoader = () => (
-  <div className="page-loader">
-    <div className="spinner"></div>
-  </div>
+  <div className="page-loader"><div className="spinner"></div></div>
 );
 
 const AppRoutes = () => {
