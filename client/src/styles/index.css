@@ -1523,7 +1523,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; outline: non
 }
 
 .sidebar-close {
-  display: none;
+  display: flex;
   position: absolute;
   top: 18px;
   right: 12px;
@@ -1537,6 +1537,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; outline: non
   border-radius: 50%;
   transition: var(--transition);
   z-index: 10;
+  cursor: pointer;
 }
 
 .sidebar-close:hover {
@@ -2167,8 +2168,6 @@ input, select, textarea { font-family: inherit; font-size: inherit; outline: non
 
   .sidebar-toggle { display: flex; }
 
-  .sidebar-close { display: flex; }
-
   .sidebar-overlay {
     display: block;
     position: fixed;
@@ -2198,4 +2197,8 @@ input, select, textarea { font-family: inherit; font-size: inherit; outline: non
   .stats-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 1.5rem; }
   .newsletter-card { padding: 24px 16px; }
+}
+
+@media (min-width: 769px) {
+  .sidebar-close { display: none; }
 }
