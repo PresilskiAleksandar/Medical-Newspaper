@@ -17,8 +17,7 @@ const Sidebar = ({ onClose }) => {
   const { logout } = useAuth();
 
   const isActive = useCallback((path) => {
-    if (path === '/admin') return location.pathname === '/admin';
-    return location.pathname.startsWith(path);
+    return location.pathname === path;
   }, [location.pathname]);
 
   const handleNav = useCallback((path) => {
