@@ -1289,6 +1289,36 @@ CYP2D6 полиморфизмите се од особено значење. П�
   ],
 };
 
+function countWords(text) {
+  return text.split(/\s+/).filter(Boolean).length;
+}
+
+function trimContentToLength(content, minWords = 1000, maxWords = 2500, targetWords = 1600) {
+  const words = content.split(/\s+/).filter(Boolean);
+  const wordCount = words.length;
+
+  if (wordCount >= minWords && wordCount <= maxWords) return content;
+
+  if (wordCount > maxWords) {
+    const paragraphs = content.split(/\n\s*\n/).filter(p => p.trim());
+    let result = [];
+    let accumulated = 0;
+    for (const p of paragraphs) {
+      const pWordCount = p.split(/\s+/).filter(Boolean).length;
+      if (accumulated + pWordCount > targetWords && accumulated >= minWords) break;
+      if (accumulated + pWordCount > maxWords && accumulated < minWords) {
+        result.push(p);
+        break;
+      }
+      result.push(p);
+      accumulated += pWordCount;
+    }
+    return result.join('\n\n');
+  }
+
+  return content;
+}
+
 function getNextImageId() {
   return imgCounter++;
 }
@@ -1352,7 +1382,11 @@ async function main() {
         console.log(`  ~ "${tpl.title.substring(0, 60)}..." - веќе постои (SLUG колизија), се креира со уникатен слаг`);
       }
 
-      const articleObj = { category_slug: cat.slug, title: tpl.title, content: tpl.content, tags: '' };
+      const trimmedContent = trimContentToLength(tpl.content);
+      const wc = countWords(trimmedContent);
+      const color = wc < 1000 ? '⚠' : wc > 2500 ? '✗' : '✓';
+      console.log(`    Зборови: ${wc} ${color}`);
+      const articleObj = { category_slug: cat.slug, title: tpl.title, content: trimmedContent, tags: '' };
       const image = getImageForArticle(articleObj);
       markUsed(image);
 
@@ -1364,7 +1398,7 @@ async function main() {
             tpl.title,
             uniqueSlug,
             tpl.excerpt,
-            tpl.content,
+            trimmedContent,
             image,
             cat.id,
             1,
