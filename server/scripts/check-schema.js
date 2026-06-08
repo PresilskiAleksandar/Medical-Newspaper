@@ -4,11 +4,14 @@ const PROD = 'postgresql://neondb_owner:npg_lZTFJVIW34cD@ep-blue-sound-agmpejdk-
 const pool = new Pool({ connectionString: PROD });
 
 async function main() {
-  const {rows} = await pool.query(
-    `SELECT column_name, data_type, is_nullable FROM information_schema.columns WHERE table_name = 'articles' ORDER BY ordinal_position`
-  );
-  console.log('Articles table columns:');
-  rows.forEach(r => console.log(r.column_name + ' | ' + r.data_type));
+  const {rows} = await pool.query(`
+    SELECT column_name, data_type, is_nullable
+    FROM information_schema.columns
+    WHERE table_name = 'articles'
+    ORDER BY ordinal_position
+  `);
+  console.log('articles table columns:');
+  rows.forEach(r => console.log(`  ${r.column_name} (${r.data_type}, nullable=${r.is_nullable})`));
   await pool.end();
 }
 main().catch(e => { console.error(e); process.exit(1); });
