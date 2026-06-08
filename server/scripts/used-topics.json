@@ -1,0 +1,44 @@
+{
+  "registries": {
+    "used_topics": {
+      "kardiologija": ["heart failure devices", "hypertension treatment", "cholesterol management", "cardiac rehabilitation", "arrhythmia therapy"],
+      "nevrologija": [],
+      "pedijatrija": [],
+      "onkologija": [],
+      "psihijatrija": [],
+      "ishrana": [],
+      "infektivni-bolesti": [],
+      "imunologija": [],
+      "endokrinologija": [],
+      "fitnes-i-prevencija": [],
+      "genetika": [],
+      "farmakologija": [],
+      "javno-zdravje": [],
+      "stomatologija": [],
+      "farmacija": [],
+      "medicinski-tehnologii": [],
+      "medicina-na-trud": [],
+      "opsta-medicina": []
+    },
+    "cluster_rotation": {
+      "kardiologija": { "next": "prevention", "rotation": ["prevention","treatment","research","lifestyle","emergency_medicine"] },
+      "nevrologija": { "next": "prevention", "rotation": ["prevention","treatment","research","lifestyle","emergency_medicine"] },
+      "pedijatrija": { "next": "prevention", "rotation": ["prevention","treatment","research","lifestyle","emergency_medicine"] },
+      "onkologija": { "next": "prevention", "rotation": ["prevention","treatment","research","lifestyle","screening"] },
+      "psihijatrija": { "next": "prevention", "rotation": ["prevention","treatment","research","lifestyle","emergency_medicine"] },
+      "ishrana": { "next": "prevention", "rotation": ["prevention","benefits","risks","research","dietary_patterns"] },
+      "infektivni-bolesti": { "next": "prevention", "rotation": ["prevention","treatment","research","outbreaks","vaccination"] },
+      "imunologija": { "next": "prevention", "rotation": ["prevention","treatment","research","autoimmune","immunotherapy"] },
+      "endokrinologija": { "next": "prevention", "rotation": ["prevention","treatment","research","lifestyle","diagnosis"] },
+      "fitnes-i-prevencija": { "next": "prevention", "rotation": ["cardio","strength","flexibility","exercise_science","injury_prevention"] },
+      "genetika": { "next": "prevention", "rotation": ["screening","therapy","research","ethics","rare_diseases"] },
+      "farmakologija": { "next": "prevention", "rotation": ["drug_safety","new_drugs","clinical_trials","pharmacogenomics","drug_interactions"] },
+      "javno-zdravje": { "next": "prevention", "rotation": ["epidemiology","policy","health_systems","screenings","health_promotion"] },
+      "stomatologija": { "next": "prevention", "rotation": ["prevention","treatment","aesthetics","surgery","pediatric"] },
+      "farmacija": { "next": "prevention", "rotation": ["clinical_pharmacy","community_pharmacy","industrial_pharmacy","regulatory","education"] },
+      "medicinski-tehnologii": { "next": "prevention", "rotation": ["diagnostics","wearables","ai","robotics","telemedicine"] },
+      "medicina-na-trud": { "next": "prevention", "rotation": ["ergonomics","chemical_exposure","burnout","occupational_disease","workplace_safety"] },
+      "opsta-medicina": { "next": "prevention", "rotation": ["prevention","diagnosis","chronic_care","acute_care","referrals"] }
+    }
+  }
+}
