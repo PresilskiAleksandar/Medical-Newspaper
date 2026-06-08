@@ -1,5 +1,6 @@
 const db = require('../config/db');
 const { slugify } = require('../utils/helpers');
+const { getCategoryImage } = require('../services/imageService');
 
 exports.getAll = async (req, res) => {
   try {
@@ -31,9 +32,16 @@ exports.create = async (req, res) => {
       return res.status(400).json({ error: 'Категоријата веќе постои.' });
     }
 
+    let image = getCategoryImage(slug);
+    if (image && !image.includes('svg')) {
+      await db.query('UPDATE categories SET image = $1 WHERE slug = $2', [image, slug]);
+    } else {
+      image = null;
+    }
+
     const result = await db.query(
-      'INSERT INTO categories (name, slug) VALUES ($1, $2) RETURNING *',
-      [name, slug]
+      'INSERT INTO categories (name, slug, image) VALUES ($1, $2, $3) RETURNING *',
+      [name, slug, image]
     );
 
     res.status(201).json(result.rows[0]);
