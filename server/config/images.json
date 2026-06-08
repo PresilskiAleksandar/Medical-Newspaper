@@ -1,0 +1,692 @@
+{
+  "version": "1.0.0",
+  "aspectRatio": "16:9",
+  "defaultWidth": 1200,
+  "defaultHeight": 675,
+  "fallback": "/uploads/medical-fallback.svg",
+  "categories": {
+    "kardiologija": {
+      "name": "Кардиологија",
+      "colors": [
+        "#e74c3c",
+        "#c0392b"
+      ],
+      "palette": [
+        "red",
+        "rose",
+        "crimson"
+      ],
+      "keywords": [
+        "heart",
+        "cardiology",
+        "ECG",
+        "cardiovascular"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "nevrologija": {
+      "name": "Неврологија",
+      "colors": [
+        "#8e44ad",
+        "#6c3483"
+      ],
+      "palette": [
+        "purple",
+        "violet",
+        "lavender"
+      ],
+      "keywords": [
+        "brain",
+        "neurology",
+        "neurons",
+        "nervous system"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "onkologija": {
+      "name": "Онкологија",
+      "colors": [
+        "#2c3e50",
+        "#1a252f"
+      ],
+      "palette": [
+        "dark blue",
+        "navy",
+        "steel"
+      ],
+      "keywords": [
+        "cancer",
+        "oncology",
+        "tumor",
+        "research"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "psihijatrija": {
+      "name": "Психијатрија",
+      "colors": [
+        "#1abc9c",
+        "#16a085"
+      ],
+      "palette": [
+        "teal",
+        "mint",
+        "seafoam"
+      ],
+      "keywords": [
+        "psychology",
+        "mental health",
+        "wellness",
+        "therapy"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "pedijatrija": {
+      "name": "Педијатрија",
+      "colors": [
+        "#3498db",
+        "#2980b9"
+      ],
+      "palette": [
+        "blue",
+        "sky",
+        "cerulean"
+      ],
+      "keywords": [
+        "pediatrics",
+        "children",
+        "child health"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "infektivni-bolesti": {
+      "name": "Инфективни Болести",
+      "colors": [
+        "#e67e22",
+        "#d35400"
+      ],
+      "palette": [
+        "orange",
+        "amber",
+        "tangerine"
+      ],
+      "keywords": [
+        "infectious diseases",
+        "virus",
+        "bacteria",
+        "microbiology"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "ishrana": {
+      "name": "Исхрана",
+      "colors": [
+        "#27ae60",
+        "#1e8449"
+      ],
+      "palette": [
+        "green",
+        "emerald",
+        "sage"
+      ],
+      "keywords": [
+        "nutrition",
+        "food",
+        "diet",
+        "healthy eating"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "imunologija": {
+      "name": "Имунологија",
+      "colors": [
+        "#2980b9",
+        "#1a5276"
+      ],
+      "palette": [
+        "blue",
+        "cobalt",
+        "indigo"
+      ],
+      "keywords": [
+        "immunology",
+        "immune system",
+        "vaccines",
+        "antibodies"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "endokrinologija": {
+      "name": "Ендокринологија",
+      "colors": [
+        "#d4ac0d",
+        "#b7950b"
+      ],
+      "palette": [
+        "gold",
+        "yellow",
+        "amber"
+      ],
+      "keywords": [
+        "endocrinology",
+        "hormones",
+        "diabetes",
+        "thyroid"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "fitnes-i-prevencija": {
+      "name": "Фитнес и Превенција",
+      "colors": [
+        "#2ecc71",
+        "#27ae60"
+      ],
+      "palette": [
+        "green",
+        "lime",
+        "spring"
+      ],
+      "keywords": [
+        "fitness",
+        "exercise",
+        "prevention",
+        "workout"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "genetika": {
+      "name": "Генетика",
+      "colors": [
+        "#9b59b6",
+        "#7d3c98"
+      ],
+      "palette": [
+        "purple",
+        "magenta",
+        "orchid"
+      ],
+      "keywords": [
+        "genetics",
+        "DNA",
+        "genomics",
+        "genes"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "farmakologija": {
+      "name": "Фармакологија",
+      "colors": [
+        "#1abc9c",
+        "#148f77"
+      ],
+      "palette": [
+        "teal",
+        "mint",
+        "cyan"
+      ],
+      "keywords": [
+        "pharmacy",
+        "pharmacology",
+        "medications",
+        "drugs"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "javno-zdravje": {
+      "name": "Јавно Здравје",
+      "colors": [
+        "#34495e",
+        "#2c3e50"
+      ],
+      "palette": [
+        "slate",
+        "charcoal",
+        "gray"
+      ],
+      "keywords": [
+        "public health",
+        "epidemiology",
+        "health policy"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "opsta-medicina": {
+      "name": "Општа Медицина",
+      "colors": [
+        "#3498db",
+        "#2980b9"
+      ],
+      "palette": [
+        "blue",
+        "sky"
+      ],
+      "keywords": [
+        "general medicine"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "stomatologija": {
+      "name": "Стоматологија",
+      "colors": [
+        "#e74c3c",
+        "#c0392b"
+      ],
+      "palette": [
+        "red",
+        "crimson"
+      ],
+      "keywords": [
+        "dentistry"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "farmacija": {
+      "name": "Фармација",
+      "colors": [
+        "#1abc9c",
+        "#16a085"
+      ],
+      "palette": [
+        "teal",
+        "mint"
+      ],
+      "keywords": [
+        "pharmacy"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "medicinski-tehnologii": {
+      "name": "Медицински Технологии",
+      "colors": [
+        "#34495e",
+        "#2c3e50"
+      ],
+      "palette": [
+        "slate",
+        "charcoal"
+      ],
+      "keywords": [
+        "medical technology"
+      ],
+      "unsplashPhotoId": ""
+    },
+    "medicina-na-trud": {
+      "name": "Медицина на Труд",
+      "colors": [
+        "#e67e22",
+        "#d35400"
+      ],
+      "palette": [
+        "orange",
+        "amber"
+      ],
+      "keywords": [
+        "occupational medicine"
+      ],
+      "unsplashPhotoId": ""
+    }
+  },
+  "articleImageKeywords": {
+    "kardiologija": [
+      "heart anatomy model",
+      "ECG electrocardiogram",
+      "blood pressure monitor",
+      "cardiovascular system",
+      "stethoscope heart",
+      "cardiac surgery",
+      "heart rhythm monitoring",
+      "coronary angiography",
+      "heart valve anatomy",
+      "cardiac rehabilitation",
+      "heart muscle tissue",
+      "atherosclerosis plaque",
+      "echocardiogram ultrasound",
+      "pacemaker device",
+      "heart medication pills"
+    ],
+    "nevrologija": [
+      "brain MRI scan",
+      "neurons synapse",
+      "brain anatomy",
+      "neurological exam",
+      "brain mapping",
+      "spinal cord",
+      "nerve cells",
+      "EEG brain waves",
+      "cerebral blood flow",
+      "neurotransmitter molecules",
+      "brain stroke",
+      "cognitive testing",
+      "neurology consultation",
+      "brain activity scan",
+      "peripheral nerves"
+    ],
+    "onkologija": [
+      "cancer cells microscope",
+      "radiation therapy",
+      "oncology research",
+      "DNA damage",
+      "cancer treatment",
+      "tumor imaging",
+      "chemotherapy drugs",
+      "immunotherapy cells",
+      "biopsy procedure",
+      "cancer staging",
+      "oncology consultation",
+      "targeted therapy",
+      "PET CT scan",
+      "tumor marker test",
+      "palliative care"
+    ],
+    "psihijatrija": [
+      "therapy session",
+      "brain wellness",
+      "mindfulness meditation",
+      "mental health",
+      "cognitive therapy",
+      "psychiatric evaluation",
+      "stress management",
+      "sleep study",
+      "anxiety treatment",
+      "depression therapy",
+      "group therapy",
+      "mental wellness",
+      "cognitive behavioral therapy",
+      "brain chemistry",
+      "emotional health"
+    ],
+    "pedijatrija": [
+      "child health checkup",
+      "pediatric care",
+      "baby healthcare",
+      "children vaccination",
+      "child development",
+      "pediatric stethoscope",
+      "child nutrition",
+      "adolescent health",
+      "newborn screening",
+      "pediatric hospital",
+      "child growth chart",
+      "school health",
+      "pediatric cardiology",
+      "child immunization",
+      "developmental screening"
+    ],
+    "infektivni-bolesti": [
+      "virus microscope",
+      "bacteria culture",
+      "immunity cells",
+      "infection control",
+      "microbiology laboratory",
+      "antiviral drugs",
+      "antibiotic resistance",
+      "vaccine development",
+      "global pandemic",
+      "hospital hygiene",
+      "pathogen research",
+      "infection prevention",
+      "contagious disease",
+      "sterilization equipment",
+      "epidemiological tracking"
+    ],
+    "ishrana": [
+      "healthy food plate",
+      "nutrition diet",
+      "fresh vegetables fruits",
+      "balanced meal",
+      "superfoods",
+      "Mediterranean diet",
+      "vitamin supplements",
+      "meal planning",
+      "organic produce",
+      "nutritional analysis",
+      "healthy cooking",
+      "food pyramid",
+      "dietary fiber",
+      "protein sources",
+      "hydration water"
+    ],
+    "imunologija": [
+      "immune cells",
+      "vaccine research",
+      "antibody structure",
+      "immune system",
+      "lymphocyte",
+      "autoimmune disease",
+      "immunoglobulin",
+      "T cell activation",
+      "allergy testing",
+      "immune response",
+      "vaccination vial",
+      "cytokine molecules",
+      "immune memory",
+      "monoclonal antibody",
+      "immunosuppression therapy"
+    ],
+    "endokrinologija": [
+      "thyroid gland",
+      "blood sugar test",
+      "hormone molecule",
+      "diabetes care",
+      "metabolic health",
+      "insulin therapy",
+      "adrenal gland",
+      "pituitary gland",
+      "hormone replacement",
+      "glucose monitoring",
+      "endocrine system",
+      "thyroid ultrasound",
+      "diabetes prevention",
+      "metabolic rate",
+      "hormonal balance"
+    ],
+    "fitnes-i-prevencija": [
+      "exercise workout",
+      "fitness training",
+      "healthy lifestyle",
+      "preventive care",
+      "physical activity",
+      "strength training",
+      "cardio exercise",
+      "flexibility stretching",
+      "fitness tracker",
+      "preventive medicine",
+      "health screening",
+      "wellness coaching",
+      "posture correction",
+      "sports medicine",
+      "recovery therapy"
+    ],
+    "genetika": [
+      "DNA helix",
+      "genetic research",
+      "chromosomes",
+      "gene editing",
+      "genomic sequencing",
+      "genetic testing",
+      "hereditary traits",
+      "gene therapy",
+      "CRISPR technology",
+      "genetic counseling",
+      "DNA analysis",
+      "mutation research",
+      "genetic markers",
+      "personalized genomics",
+      "epigenetics study"
+    ],
+    "farmakologija": [
+      "medications pills",
+      "pharmaceutical research",
+      "drug development",
+      "prescription medicines",
+      "pharmacology lab",
+      "clinical trials",
+      "drug interactions",
+      "pharmacist consultation",
+      "generic medications",
+      "natural remedies",
+      "dosage forms",
+      "adverse reactions",
+      "pharmacovigilance",
+      "drug safety",
+      "therapeutic monitoring"
+    ],
+    "javno-zdravje": [
+      "community health",
+      "health statistics",
+      "public health campaign",
+      "epidemiology map",
+      "health policy",
+      "health education",
+      "preventive screening",
+      "vaccination program",
+      "health economics",
+      "environmental health",
+      "global health",
+      "health equity",
+      "health promotion",
+      "disease registry",
+      "public health research"
+    ],
+    "opsta-medicina": [
+      "general practice clinic",
+      "family doctor consultation",
+      "primary care",
+      "medical examination",
+      "preventive checkup",
+      "patient history",
+      "diagnostic tests",
+      "chronic disease management",
+      "health screening",
+      "vaccination center",
+      "medical records",
+      "referral specialist",
+      "community medicine",
+      "home healthcare",
+      "telemedicine consultation"
+    ],
+    "stomatologija": [
+      "dental examination",
+      "teeth cleaning",
+      "oral hygiene",
+      "dental xray",
+      "cavity treatment",
+      "dental implant",
+      "orthodontic braces",
+      "gum disease",
+      "tooth extraction",
+      "cosmetic dentistry",
+      "dental crown",
+      "root canal",
+      "pediatric dentistry",
+      "mouth guard",
+      "teeth whitening"
+    ],
+    "farmacija": [
+      "pharmacy counter",
+      "prescription dispensing",
+      "pharmacist consultation",
+      "medication counseling",
+      "over counter medicines",
+      "pharmaceutical care",
+      "drug compounding",
+      "clinical pharmacy",
+      "community pharmacy",
+      "hospital pharmacy",
+      "medication review",
+      "herbal supplements",
+      "pharmacy management",
+      "patient education",
+      "immunization pharmacy"
+    ],
+    "medicinski-tehnologii": [
+      "medical technology",
+      "diagnostic imaging",
+      "ultrasound machine",
+      "CT scanner",
+      "MRI machine",
+      "laboratory equipment",
+      "patient monitoring",
+      "surgical robot",
+      "digital health",
+      "wearable device",
+      "telemedicine platform",
+      "health informatics",
+      "medical software",
+      "biomedical engineering",
+      "point of care testing"
+    ],
+    "medicina-na-trud": [
+      "occupational health",
+      "workplace safety",
+      "employee health screening",
+      "ergonomic assessment",
+      "industrial hygiene",
+      "occupational disease",
+      "work injury prevention",
+      "fitness for work",
+      "occupational medicine",
+      "workplace wellness",
+      "hearing protection",
+      "respiratory protection",
+      "occupational toxicology",
+      "health surveillance",
+      "return to work program"
+    ]
+  },
+  "specificArticleImages": {
+    "kardiologija": {
+      "Нови европски насоки за третман на артериска хипертензија": "blood pressure measurement",
+      "Кардиоваскуларните болести и влијанието на седечкиот начин на живот": "sedentary lifestyle heart"
+    },
+    "nevrologija": {
+      "Рана дијагноза на Алцхајмерова болест преку биомаркери во крвта": "alzheimer brain research",
+      "Паркинсонова болест и новите терапии за подобрување на квалитетот на живот": "parkinson brain neurons"
+    },
+    "onkologija": {
+      "Нови биомаркери за рано откривање на малигни заболувања": "cancer biomarkers lab",
+      "Имунотерапија во третман на малигни болести": "immunotherapy cancer cells"
+    },
+    "psihijatrija": {
+      "Депресија кај адолесценти и нови пристапи во третманот": "adolescent depression therapy",
+      "Дигитална detox терапија и влијанието на социјалните мрежи врз менталното здравје": "digital detox mental health"
+    },
+    "pedijatrija": {
+      "Нови вакцини во детската имунизација и нивната безбедност": "child vaccination immunization",
+      "Дијагноза и третман на ретки детски болести": "rare pediatric diseases research"
+    },
+    "infektivni-bolesti": {
+      "Антимикробна резистенција и нови стратегии за борба против супербактериите": "antibiotic resistance bacteria",
+      "Нови антивирусни терапии и вакцини во развој": "antiviral research laboratory"
+    },
+    "ishrana": {
+      "Медитеранската исхрана како превенција од хронични болести": "mediterranean diet food",
+      "Нутриционистички пристап во третманот на дигестивни нарушувања": "digestive health nutrition"
+    },
+    "imunologija": {
+      "Нов увид во автоимуните болести и напредок во третманот": "autoimmune disease immune cells",
+      "Развој на нови вакцини базирани на mRNA технологија": "mRNA vaccine research"
+    },
+    "endokrinologija": {
+      "Дијабетес тип 1 и новите технолошки решенија за следење на гликозата": "diabetes glucose monitoring",
+      "Дијабетес тип 2 и метаболички синдром": "metabolic syndrome diabetes",
+      "Тироидни заболувања и современи дијагностички методи": "thyroid gland diagnosis"
+    },
+    "fitnes-i-prevencija": {
+      "Фитнес и редовно вежбање како превенција од кардиоваскуларни болести": "fitness heart prevention",
+      "Спортски повреди и превентивни стратегии за спортисти": "sports injury prevention"
+    },
+    "genetika": {
+      "CRISPR и новите граници во генската терапија": "CRISPR gene therapy",
+      "Фармакогенетика и персонализирана медицина": "pharmacogenetics personalized medicine"
+    },
+    "farmakologija": {
+      "Развој на нови лекови и клинички испитувања": "clinical trials drug development",
+      "Интеракции помеѓу лекови и нивното значење во клиничката пракса": "drug interactions medications"
+    },
+    "javno-zdravje": {
+      "Здравствени нееднаквости и пристапот до здравствена заштита во Северна Македонија": "health inequalities access",
+      "Превенција на незаразни болести и национални стратегии за јавно здравје": "noncommunicable diseases prevention"
+    }
+  }
+}

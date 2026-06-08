@@ -6,6 +6,8 @@ import { useNotification } from '../context/NotificationContext';
 import { IMAGE_BASE } from '../config';
 import CommentSection from '../components/CommentSection';
 
+const FALLBACK = '/uploads/medical-fallback.svg';
+
 const ArticleDetail = () => {
   const { id } = useParams();
   const { user } = useAuth();
@@ -13,6 +15,7 @@ const ArticleDetail = () => {
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const [favoriteId, setFavoriteId] = useState(null);
 
   useEffect(() => {
@@ -106,11 +109,13 @@ const ArticleDetail = () => {
           </div>
         </div>
 
-        {article.image && (
-          <div className="article-detail-image">
-            <img src={`${IMAGE_BASE}${article.image}`} alt={article.title} />
-          </div>
-        )}
+        <div className="article-detail-image">
+          <img
+            src={article.image ? (imgError ? `${IMAGE_BASE}${FALLBACK}` : `${IMAGE_BASE}${article.image}`) : `${IMAGE_BASE}${FALLBACK}`}
+            alt={article.title}
+            onError={() => setImgError(true)}
+          />
+        </div>
 
         <div className="article-detail-content" dangerouslySetInnerHTML={{ __html: article.content }} />
 

@@ -1,9 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNews } from '../context/NewsContext';
 import ArticleCard from '../components/ArticleCard';
 import SkeletonCard from '../components/SkeletonCard';
 import { IMAGE_BASE } from '../config';
+
+const FALLBACK = '/uploads/medical-fallback.svg';
+
+const FeaturedCard = ({ article }) => {
+  const [imgError, setImgError] = useState(false);
+  const src = article.image
+    ? (imgError ? `${IMAGE_BASE}${FALLBACK}` : `${IMAGE_BASE}${article.image}`)
+    : `${IMAGE_BASE}${FALLBACK}`;
+  return (
+    <div className="featured-card">
+      <Link to={`/vest/${article.slug || article.id}`} className="featured-image-link">
+        <div className="featured-image">
+          <img src={src} alt={article.title} onError={() => setImgError(true)} />
+        </div>
+      </Link>
+      <div className="featured-body">
+        {article.category_name && <span className="card-category">{article.category_name}</span>}
+        <Link to={`/vest/${article.slug || article.id}`} className="card-title-link">
+          <h3>{article.title}</h3>
+        </Link>
+        <p>{article.excerpt}</p>
+      </div>
+    </div>
+  );
+};
 
 const Home = () => {
   const { articles, featured, loading, fetchArticles, fetchFeatured } = useNews();
@@ -36,35 +61,7 @@ const Home = () => {
             <h2 className="section-title">Избрани Вести</h2>
           </div>
           <div className="featured-grid">
-            {featured.slice(0, 2).map((article) => (
-              <div key={article.id} className="featured-card">
-                <Link to={`/vest/${article.slug || article.id}`} className="featured-image-link">
-                  <div className="featured-image">
-                    {article.image ? (
-                      <img src={`${IMAGE_BASE}${article.image}`} alt={article.title} />
-                    ) : (
-                      <div className="featured-placeholder">
-                        <svg viewBox="0 0 600 280" className="placeholder-svg">
-                          <rect width="600" height="280" fill="url(#fg)" />
-                          <defs><linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#e0f2fe"/><stop offset="100%" stopColor="#ccfbf1"/></linearGradient></defs>
-                          <circle cx="300" cy="110" r="40" fill="rgba(255,255,255,0.35)" />
-                          <text x="300" y="122" textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="36" fontWeight="300">+</text>
-                          <rect x="200" y="180" width="200" height="10" rx="5" fill="rgba(255,255,255,0.4)" />
-                          <rect x="230" y="200" width="140" height="8" rx="4" fill="rgba(255,255,255,0.25)" />
-                        </svg>
-                      </div>
-                    )}
-                  </div>
-                </Link>
-                <div className="featured-body">
-                  {article.category_name && <span className="card-category">{article.category_name}</span>}
-                  <Link to={`/vest/${article.slug || article.id}`} className="card-title-link">
-                    <h3>{article.title}</h3>
-                  </Link>
-                  <p>{article.excerpt}</p>
-                </div>
-              </div>
-            ))}
+            {featured.slice(0, 2).map((article) => <FeaturedCard key={article.id} article={article} />)}
           </div>
         </section>
       )}

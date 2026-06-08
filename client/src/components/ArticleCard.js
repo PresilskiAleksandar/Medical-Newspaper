@@ -1,35 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IMAGE_BASE } from '../config';
 
+const FALLBACK = '/uploads/medical-fallback.svg';
+
 const ArticleCard = ({ article }) => {
+  const [imgError, setImgError] = useState(false);
   const date = new Date(article.created_at).toLocaleDateString('mk-MK', {
     day: 'numeric', month: 'long', year: 'numeric',
   });
+
+  const imgSrc = article.image
+    ? (imgError ? `${IMAGE_BASE}${FALLBACK}` : `${IMAGE_BASE}${article.image}`)
+    : `${IMAGE_BASE}${FALLBACK}`;
 
   return (
     <article className="article-card">
       <Link to={`/vest/${article.slug || article.id}`} className="card-image-link">
         <div className="card-image">
-          {article.image ? (
-            <img src={`${IMAGE_BASE}${article.image}`} alt={article.title} loading="lazy" />
-          ) : (
-            <div className="card-image-placeholder">
-              <svg viewBox="0 0 400 200" className="placeholder-svg">
-                <rect width="400" height="200" fill="url(#grad)" />
-                <defs>
-                  <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{stopColor:'var(--primary-light)',stopOpacity:1}} />
-                    <stop offset="100%" style={{stopColor:'var(--teal-light)',stopOpacity:1}} />
-                  </linearGradient>
-                </defs>
-                <circle cx="200" cy="80" r="30" fill="rgba(255,255,255,0.3)" />
-                <rect x="140" y="130" width="120" height="8" rx="4" fill="rgba(255,255,255,0.4)" />
-                <rect x="160" y="148" width="80" height="6" rx="3" fill="rgba(255,255,255,0.25)" />
-                <text x="200" y="88" textAnchor="middle" fill="rgba(255,255,255,0.6)" fontSize="28" fontWeight="300">+</text>
-              </svg>
-            </div>
-          )}
+          <img src={imgSrc} alt={article.title} loading="lazy" onError={() => setImgError(true)}
+            className="card-img" />
         </div>
       </Link>
       <div className="card-body">

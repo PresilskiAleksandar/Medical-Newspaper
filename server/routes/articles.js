@@ -11,4 +11,7 @@ router.post('/', authenticate, authorizeAdmin, upload.single('image'), articleCo
 router.put('/:id', authenticate, authorizeAdmin, upload.single('image'), articleController.update);
 router.delete('/:id', authenticate, authorizeAdmin, articleController.delete);
 
+// Auto-assign image to existing article based on its category and content
+router.post('/:id/assign-image', authenticate, authorizeAdmin, articleController.assignImage);
+
 module.exports = router;

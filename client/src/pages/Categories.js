@@ -3,6 +3,25 @@ import { Link } from 'react-router-dom';
 import { categoriesAPI } from '../services/api';
 import { IMAGE_BASE } from '../config';
 
+const FALLBACK = '/uploads/medical-fallback.svg';
+
+const CategoryCard = ({ cat }) => {
+  const [imgError, setImgError] = useState(false);
+  const src = cat.image
+    ? (imgError ? `${IMAGE_BASE}${FALLBACK}` : `${IMAGE_BASE}${cat.image}`)
+    : `${IMAGE_BASE}${FALLBACK}`;
+  return (
+    <Link to={`/kategorii/${cat.slug}`} className="category-card">
+      <div className="category-image-wrapper">
+        <img src={src} alt={cat.name} className="category-image" loading="lazy" onError={() => setImgError(true)} />
+        <div className="category-icon"><span>+</span></div>
+      </div>
+      <h3 className="category-name">{cat.name}</h3>
+      <span className="category-count">{cat.article_count} статии</span>
+    </Link>
+  );
+};
+
 const Categories = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -30,23 +49,7 @@ const Categories = () => {
           <p className="no-results">Нема достапни категории.</p>
         ) : (
           <div className="categories-grid">
-            {categories.map((cat) => (
-              <Link to={`/kategorii/${cat.slug}`} key={cat.id} className="category-card">
-                <div className="category-image-wrapper">
-                  <img
-                    src={cat.image ? `${IMAGE_BASE}${cat.image}` : ''}
-                    alt={cat.name}
-                    className="category-image"
-                    loading="lazy"
-                  />
-                  <div className="category-icon">
-                    <span>+</span>
-                  </div>
-                </div>
-                <h3 className="category-name">{cat.name}</h3>
-                <span className="category-count">{cat.article_count} статии</span>
-              </Link>
-            ))}
+            {categories.map((cat) => <CategoryCard key={cat.id} cat={cat} />)}
           </div>
         )}
       </div>

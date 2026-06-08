@@ -1,5 +1,6 @@
 const db = require('../config/db');
 const { slugify } = require('../utils/helpers');
+const { getImageForArticle, resetUsedImages } = require('../scripts/imageAssigner');
 
 exports.getAll = async (req, res) => {
   try {
@@ -116,7 +117,15 @@ exports.create = async (req, res) => {
       slug = slug + '-' + Date.now();
     }
 
-    const image = req.file ? '/uploads/' + req.file.filename : (req.body.image || null);
+    let image = req.file ? '/uploads/' + req.file.filename : (req.body.image || null);
+    if (!image) {
+      const catRes = await db.query('SELECT slug FROM categories WHERE id = $1', [category_id]);
+      const catSlug = catRes.rows.length > 0 ? catRes.rows[0].slug : '';
+      if (catSlug) {
+        resetUsedImages();
+        image = getImageForArticle({ category_slug: catSlug, title, tags: '' });
+      }
+    }
 
     const result = await db.query(
       `INSERT INTO articles (title, slug, excerpt, content, image, category_id, author_id, featured, status, meta_title, meta_description, source_name, source_url)
@@ -174,6 +183,27 @@ exports.update = async (req, res) => {
     );
 
     res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Внатрешна грешка на серверот.' });
+  }
+};
+
+exports.assignImage = async (req, res) => {
+  try {
+    const article = await db.query(
+      `SELECT a.id, a.title, a.image, c.slug AS category_slug
+       FROM articles a LEFT JOIN categories c ON a.category_id = c.id
+       WHERE a.id = $1`, [req.params.id]
+    );
+    if (article.rows.length === 0) {
+      return res.status(404).json({ error: 'Статијата не е пронајдена.' });
+    }
+    const a = article.rows[0];
+    resetUsedImages();
+    const newImage = getImageForArticle({ category_slug: a.category_slug || '', title: a.title, tags: '' });
+    await db.query('UPDATE articles SET image = $1 WHERE id = $2', [newImage, a.id]);
+    res.json({ image: newImage, previous: a.image });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Внатрешна грешка на серверот.' });
