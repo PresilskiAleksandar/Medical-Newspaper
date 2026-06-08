@@ -1439,7 +1439,11 @@ async function main() {
   process.exit(0);
 }
 
-main().catch(e => {
-  console.error('Неуспешно генерирање:', e);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch(e => {
+    console.error('Неуспешно генерирање:', e);
+    process.exit(1);
+  });
+}
+
+module.exports = { ARTICLE_TEMPLATES, countWords, trimContentToLength };
