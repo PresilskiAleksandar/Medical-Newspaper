@@ -1,7 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
-<defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:hsl(-28, 60%, 40%)"/><stop offset="100%" style="stop-color:hsl(-8, 55%, 30%)"/></linearGradient></defs>
-<rect width="1200" height="675" fill="url(#g)"/>
-<circle cx="120" cy="80" r="120" fill="rgba(255,255,255,0.03)"/>
-<circle cx="1080" cy="595" r="180" fill="rgba(255,255,255,0.03)"/>
-<text x="600" y="350" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="Arial,sans-serif" font-size="42" font-weight="bold">medical technology</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#34495e"/><stop offset="100%" style="stop-color:#34495e"/></linearGradient><linearGradient id="g2" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#34495e"/><stop offset="100%" style="stop-color:#2c3e50"/></linearGradient><linearGradient id="ol" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.12)"/><stop offset="100%" style="stop-color:rgba(0,0,0,0.08)"/></linearGradient></defs><rect width="1200" height="675" fill="url(#g)"/><rect width="1200" height="675" fill="url(#ol)"/><circle cx="96" cy="54" r="300" fill="rgba(255,255,255,0.03)"/><circle cx="1104" cy="621" r="360" fill="rgba(255,255,255,0.03)"/><circle cx="1080" cy="54" r="120" fill="rgba(255,255,255,0.03)"/><circle cx="120" cy="607.5" r="144" fill="rgba(255,255,255,0.03)"/><g transform="translate(0, -15)"><rect x="318" y="219" width="84" height="60" rx="4" fill="none" stroke="url(#g)" stroke-width="3" opacity="0.85"/>
+  <line x1="342" y1="279" x2="342" y2="297" stroke="url(#g)" stroke-width="2" opacity="0.6"/>
+  <line x1="378" y1="279" x2="378" y2="297" stroke="url(#g)" stroke-width="2" opacity="0.6"/>
+  <line x1="324" y1="297" x2="396" y2="297" stroke="url(#g)" stroke-width="2" opacity="0.6"/>
+  <circle cx="360" cy="249" r="9.6" fill="url(#g)" opacity="0.3"/>
+  <rect x="312" y="207" width="96" height="3" rx="1.5" fill="rgba(255,255,255,0.15)"/></g><text x="600" y="640" text-anchor="middle" fill="rgba(255,255,255,0.12)" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="18" font-weight="300" letter-spacing="3">МЕДИЦИНСКИ ТЕХНОЛОГИИ</text><circle cx="575" cy="653" r="2.5" fill="rgba(255,255,255,0.1)"/><circle cx="600" cy="653" r="2.5" fill="rgba(255,255,255,0.13)"/><circle cx="625" cy="653" r="2.5" fill="rgba(255,255,255,0.16)"/></svg>

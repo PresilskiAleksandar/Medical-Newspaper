@@ -7,9 +7,10 @@ function getImageForArticle(article) {
   return imageService.getArticleImage(
     article.title || '',
     article.content || '',
-    article.category_slug || article.categorySlug || ''
+     article.category_slug || article.categorySlug || '',
+    article.tags || ''
   );
 }
-function extractKeywords(title, content) { return imageService.extractKeywords(title || '', content || ''); }
+function extractKeywords(title, content) { return imageService.extractKeywords(title || '', content || '', ''); }
 
 module.exports = { getCategoryImage, getImageForArticle, extractKeywords, resetUsedImages, markUsed };

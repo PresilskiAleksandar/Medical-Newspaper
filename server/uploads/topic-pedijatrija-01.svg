@@ -1,7 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
-<defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:hsl(112, 60%, 40%)"/><stop offset="100%" style="stop-color:hsl(132, 55%, 30%)"/></linearGradient></defs>
-<rect width="1200" height="675" fill="url(#g)"/>
-<circle cx="120" cy="80" r="120" fill="rgba(255,255,255,0.03)"/>
-<circle cx="1080" cy="595" r="180" fill="rgba(255,255,255,0.03)"/>
-<text x="600" y="350" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="Arial,sans-serif" font-size="42" font-weight="bold">child health checkup</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3498db"/><stop offset="100%" style="stop-color:#3498db"/></linearGradient><linearGradient id="g2" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3498db"/><stop offset="100%" style="stop-color:#2980b9"/></linearGradient><linearGradient id="ol" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.12)"/><stop offset="100%" style="stop-color:rgba(0,0,0,0.08)"/></linearGradient></defs><rect width="1200" height="675" fill="url(#g)"/><rect width="1200" height="675" fill="url(#ol)"/><circle cx="96" cy="54" r="300" fill="rgba(255,255,255,0.03)"/><circle cx="1104" cy="621" r="360" fill="rgba(255,255,255,0.03)"/><circle cx="1080" cy="54" r="120" fill="rgba(255,255,255,0.03)"/><circle cx="120" cy="607.5" r="144" fill="rgba(255,255,255,0.03)"/><g transform="translate(0, -15)"><circle cx="360" cy="237" r="30" fill="url(#g)" opacity="0.85"/>
+  <circle cx="351" cy="231" r="2.5" fill="rgba(255,255,255,0.7)"/>
+  <circle cx="369" cy="231" r="2.5" fill="rgba(255,255,255,0.7)"/>
+  <path d="M352.5 249 Q360 261, 367.5 249" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M324 291 Q360 309, 396 291" fill="none" stroke="url(#g)" stroke-width="2.5" opacity="0.6"/></g><text x="600" y="640" text-anchor="middle" fill="rgba(255,255,255,0.12)" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="18" font-weight="300" letter-spacing="3">ПЕДИЈАТРИЈА</text><circle cx="575" cy="653" r="2.5" fill="rgba(255,255,255,0.1)"/><circle cx="600" cy="653" r="2.5" fill="rgba(255,255,255,0.13)"/><circle cx="625" cy="653" r="2.5" fill="rgba(255,255,255,0.16)"/></svg>

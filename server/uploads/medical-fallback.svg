@@ -1,15 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
-  <defs>
-    <linearGradient id="fbg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#636e72;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#2d3436;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="675" fill="url(#fbg)"/>
-  <circle cx="200" cy="150" r="180" fill="rgba(255,255,255,0.04)"/>
-  <circle cx="1000" cy="525" r="220" fill="rgba(255,255,255,0.04)"/>
-  <path d="M600 320 L620 360 L580 360Z" fill="rgba(255,255,255,0.15)"/>
-  <circle cx="600" cy="300" r="30" fill="rgba(255,255,255,0.12)"/>
-  <text x="600" y="440" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="Arial,sans-serif" font-size="28">Медицинска Илустрација</text>
-  <text x="600" y="480" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-family="Arial,sans-serif" font-size="18">MedInfo</text>
+<defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#2c3e50"/><stop offset="100%" style="stop-color:#34495e"/></linearGradient>
+<linearGradient id="ic" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:rgba(255,255,255,0.85)"/><stop offset="100%" style="stop-color:rgba(255,255,255,0.5)"/></linearGradient></defs>
+<rect width="1200" height="675" fill="url(#bg)"/>
+<circle cx="600" cy="310" r="80" fill="none" stroke="url(#ic)" stroke-width="4" opacity="0.8"/>
+<circle cx="600" cy="310" r="30" fill="url(#ic)" opacity="0.4"/>
+<line x1="600" y1="390" x2="600" y2="460" stroke="url(#ic)" stroke-width="5" opacity="0.8"/>
+<line x1="560" y1="430" x2="640" y2="430" stroke="url(#ic)" stroke-width="5" opacity="0.8"/>
+<line x1="600" y1="460" x2="570" y2="510" stroke="url(#ic)" stroke-width="5" opacity="0.8"/>
+<line x1="600" y1="460" x2="630" y2="510" stroke="url(#ic)" stroke-width="5" opacity="0.8"/>
+<circle cx="600" cy="180" r="120" fill="rgba(255,255,255,0.03)"/>
+<circle cx="1000" cy="580" r="200" fill="rgba(255,255,255,0.03)"/>
+<circle cx="200" cy="580" r="140" fill="rgba(255,255,255,0.03)"/>
+<text x="600" y="570" text-anchor="middle" fill="rgba(255,255,255,0.12)" font-family="'Segoe UI',Arial,sans-serif" font-size="18" letter-spacing="3">MEDICAL</text>
 </svg>

@@ -6,6 +6,8 @@ server/uploads/*.gif
 server/uploads/*.webp
 !server/uploads/img*.jpg
 !server/uploads/cat-*.jpg
+!server/uploads/unsplash-*.jpg
+!server/uploads/unsplash-manifest.json
 !server/uploads/.gitkeep
 client/build/
 *.log

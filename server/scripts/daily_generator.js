@@ -1352,7 +1352,7 @@ async function main() {
         console.log(`  ~ "${tpl.title.substring(0, 60)}..." - веќе постои (SLUG колизија), се креира со уникатен слаг`);
       }
 
-      const articleObj = { category_slug: cat.slug, title: tpl.title, tags: '' };
+      const articleObj = { category_slug: cat.slug, title: tpl.title, content: tpl.content, tags: '' };
       const image = getImageForArticle(articleObj);
       markUsed(image);
 

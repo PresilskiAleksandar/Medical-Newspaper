@@ -33,10 +33,8 @@ exports.create = async (req, res) => {
     }
 
     let image = getCategoryImage(slug);
-    if (image && !image.includes('svg')) {
+    if (image && image.includes('unsplash')) {
       await db.query('UPDATE categories SET image = $1 WHERE slug = $2', [image, slug]);
-    } else {
-      image = null;
     }
 
     const result = await db.query(

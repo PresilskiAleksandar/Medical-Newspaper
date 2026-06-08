@@ -123,7 +123,7 @@ exports.create = async (req, res) => {
       const catSlug = catRes.rows.length > 0 ? catRes.rows[0].slug : '';
       if (catSlug) {
         resetUsedImages();
-        image = getImageForArticle({ category_slug: catSlug, title, tags: '' });
+        image = getImageForArticle({ category_slug: catSlug, title, content, tags: req.body.tags || '' });
       }
     }
 
