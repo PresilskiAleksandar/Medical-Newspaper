@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { articlesAPI } from '../services/api';
+import { articlesAPI, categoriesAPI } from '../services/api';
 import ArticleCard from '../components/ArticleCard';
 import Pagination from '../components/Pagination';
 import SkeletonCard from '../components/SkeletonCard';
@@ -11,6 +11,13 @@ const CategoryArticles = () => {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [categoryName, setCategoryName] = useState('');
+
+  useEffect(() => {
+    categoriesAPI.getBySlug(slug)
+      .then((res) => setCategoryName(res.data.name))
+      .catch(() => setCategoryName(slug));
+  }, [slug]);
 
   useEffect(() => {
     setLoading(true);
@@ -28,7 +35,7 @@ const CategoryArticles = () => {
   return (
     <div className="category-articles-page fade-in">
       <div className="container">
-        <h1 className="page-title">Категорија: {slug}</h1>
+        <h1 className="page-title">Категорија: {categoryName || slug}</h1>
         <div className="articles-grid">
           {loading
             ? Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)

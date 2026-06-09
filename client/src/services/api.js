@@ -46,6 +46,7 @@ export const articlesAPI = {
 
 export const categoriesAPI = {
   getAll: () => api.get('/categories'),
+  getBySlug: (slug) => api.get(`/categories/${slug}`),
   create: (data) => api.post('/categories', data),
   delete: (id) => api.delete(`/categories/${id}`),
 };

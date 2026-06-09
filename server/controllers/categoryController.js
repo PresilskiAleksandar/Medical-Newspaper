@@ -18,6 +18,26 @@ exports.getAll = async (req, res) => {
   }
 };
 
+exports.getBySlug = async (req, res) => {
+  try {
+    const result = await db.query(
+      `SELECT c.*, COUNT(a.id) as article_count
+       FROM categories c
+       LEFT JOIN articles a ON c.id = a.category_id
+       WHERE c.slug = $1
+       GROUP BY c.id`,
+      [req.params.slug]
+    );
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Категоријата не е пронајдена.' });
+    }
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Внатрешна грешка на серверот.' });
+  }
+};
+
 exports.create = async (req, res) => {
   try {
     const { name } = req.body;
