@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const helmet = require('helmet');
 require('dotenv').config();
 
 const authRoutes = require('./routes/auth');
@@ -13,9 +14,14 @@ const uploadRoutes = require('./routes/upload');
 
 const app = express();
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(helmet());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : false,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/api/auth', authRoutes);
@@ -33,15 +39,14 @@ app.get('/api/health', async (req, res) => {
     const count = await db.query('SELECT COUNT(*) as c FROM articles');
     res.json({ status: 'ok', db: result.rows[0].now, articles: count.rows[0].c });
   } catch (e) {
-    res.status(500).json({ status: 'error', message: e.message, stack: e.stack });
+    res.status(500).json({ status: 'error', message: 'Грешка при поврзување со базата.' });
   }
 });
 
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(err.status || 500).json({
-    error: err.message || 'Внатрешна грешка на серверот.',
-  });
+  console.error(err);
+  const message = process.env.NODE_ENV === 'production' ? 'Внатрешна грешка на серверот.' : err.message;
+  res.status(err.status || 500).json({ error: message });
 });
 
 app.use((req, res) => {

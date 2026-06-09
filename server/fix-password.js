@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  connectionString: 'postgresql://postgres:Test12345!@localhost:5433/medinfo',
+  connectionString: process.env.DATABASE_URL || 'postgresql://user:password@localhost:5433/medinfo',
 });
 
 (async () => {

@@ -1,6 +1,6 @@
 require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') });
 const { Pool } = require('pg');
-const p = new Pool({connectionString: 'postgresql://neondb_owner:npg_lZTFJVIW34cD@ep-blue-sound-agmpejdk-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require'});
+const p = new Pool({connectionString: 'postgresql://user:password@neon-host/neondb?sslmode=require'});
 
 (async () => {
   const t = '\n\nИнформирањето на родителите за придобивките и безбедноста на вакцините е одговорност на здравствените работници. Препораките од доверливи извори како матичните лекари и педијатри влијаат на одлуката за вакцинација.';

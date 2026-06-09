@@ -1,6 +1,6 @@
 require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') });
 const { Pool } = require('pg');
-const pool = new Pool({ connectionString: 'postgresql://neondb_owner:npg_lZTFJVIW34cD@ep-blue-sound-agmpejdk-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require' });
+const pool = new Pool({ connectionString: 'postgresql://user:password@neon-host/neondb?sslmode=require' });
 (async () => {
   const t = await pool.query('SELECT COUNT(*) as c FROM articles');
   const s = await pool.query('SELECT COUNT(*) as c FROM articles WHERE LENGTH(content) < 3000');

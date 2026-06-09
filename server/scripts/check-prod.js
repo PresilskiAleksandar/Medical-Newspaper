@@ -1,5 +1,5 @@
 const { Pool } = require('pg');
-const p = new Pool({connectionString: 'postgresql://neondb_owner:npg_lZTFJVIW34cD@ep-blue-sound-agmpejdk-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require'});
+const p = new Pool({connectionString: 'postgresql://user:password@neon-host/neondb?sslmode=require'});
 (async () => {
   const r = await p.query("SELECT COUNT(*) as tot FROM articles");
   console.log('Production DB total:', r.rows[0].tot);

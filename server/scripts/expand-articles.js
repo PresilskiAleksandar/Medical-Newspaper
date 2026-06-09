@@ -1,6 +1,6 @@
 require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') });
 const { Pool } = require('pg');
-const pool = new Pool({ connectionString: 'postgresql://neondb_owner:npg_lZTFJVIW34cD@ep-blue-sound-agmpejdk-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require' });
+const pool = new Pool({ connectionString: 'postgresql://user:password@neon-host/neondb?sslmode=require' });
 
 // ======== EXPANSIONS mapped by category_id ========
 // Each expansion is additional 5 paragraphs (~2500 chars) to reach 500-1000 words total

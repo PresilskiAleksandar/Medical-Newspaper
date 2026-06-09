@@ -1,16 +1,61 @@
+# Dependencies
 node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment files
 .env
+.env.local
+.env.development
+.env.production
+.env.test
+server/.env
+client/.env
+client/.env.local
+
+# Build output
+client/build/
+server/dist/
+.next/
+
+# Vercel
+client/.vercel
+
+# Uploads - media files
 server/uploads/*.jpg
 server/uploads/*.png
 server/uploads/*.gif
 server/uploads/*.webp
+server/uploads/*.jpeg
 !server/uploads/img*.jpg
 !server/uploads/cat-*.jpg
 !server/uploads/unsplash-*.jpg
 !server/uploads/unsplash-manifest.json
 !server/uploads/.gitkeep
-client/build/
+
+# Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
 .DS_Store
 Thumbs.db
+Desktop.ini
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Project specific
 skill-content.md
+server/scripts/padding-pool.json
+server/scripts/used-topics.json
+
+# Runtime
+*.pid
+*.seed
