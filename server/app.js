@@ -15,8 +15,12 @@ const uploadRoutes = require('./routes/upload');
 const app = express();
 
 app.use(helmet());
+const corsOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',')
+  : ['https://medinfo-news.vercel.app', 'http://localhost:3000'];
 app.use(cors({
-  origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : false,
+  origin: corsOrigins,
+  credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
