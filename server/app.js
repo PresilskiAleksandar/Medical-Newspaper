@@ -14,7 +14,7 @@ const uploadRoutes = require('./routes/upload');
 
 const app = express();
 
-app.use(helmet());
+app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 const corsOrigins = process.env.CORS_ORIGIN
   ? process.env.CORS_ORIGIN.split(',')
   : ['https://medinfo-news.vercel.app', 'http://localhost:3000'];
